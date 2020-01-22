@@ -243,3 +243,7 @@ export default {
 };
 </script>
 ```
+
+参考：
+
+-   [你不知道的 vue 组件传值方式](https://juejin.im/post/5dafc84a6fb9a04de04d98d5)
