@@ -17,7 +17,7 @@ module.exports = {
             '/text/': [
                 {
                     title: 'Note',
-                    children: ['', 'JavaScript', '框架', 'Vue', 'React', 'Node', '通识']
+                    children: ['', 'JavaScript', '框架', 'Vue', 'React', 'Node', '通识', 'HTTP']
                 }
             ]
         }
