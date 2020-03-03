@@ -58,7 +58,7 @@ console.log(obj, cp);
 
 obj 中的 ttt1 和 ttt2 指向了同一个对象 obj2，改变 ttt1 时，ttt2 也会改变，那么拷贝之后，cp 的 ttt1 和 ttt2 应该也有相同的引用
 
-## 特殊对象
+### 特殊对象
 
 例如 Date、Reg
 
@@ -90,7 +90,7 @@ function deepClone(obj, hash = new WeakMap()) {
 }
 ```
 
-## 函数
+### 函数
 
 可以使用 `eval(fun.toString())` 对箭头函数进行拷贝，普通函数会出错
 
@@ -128,3 +128,17 @@ function cloneFunction(func) {
 -   [如何写出一个惊艳面试官的深拷贝?](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-0)
 -   [JavaScript 深拷贝的一些坑](https://juejin.im/post/5b235b726fb9a00e8a3e4e88)
 -   [https://juejin.im/post/5b20c9f65188257d7d719c1c](https://juejin.im/post/5b20c9f65188257d7d719c1c)
+
+## 扩展、密封、冻结
+
+| &nbsp;                     | 添加新属性 | 删除已有属性 | 修改已有属性 | 已有属性的可枚举性、可配置性、可写性 |
+| -------------------------- | ---------- | ------------ | ------------ | ------------------------------------ |
+| Object.preventExtensions() | 否         | 否           | 否           | 是                                   |
+| Object.seal()              | 否         | 否           | 是           | 否                                   |
+| Object.freeze()            | 否         | 否           | 否           | 否                                   |
+
+| &nbsp;                   | Object.preventExtensions(obj) | Object.seal(obj) | Object.freeze(obj) |
+| ------------------------ | ----------------------------- | ---------------- | ------------------ |
+| Object.isExtensible(obj) | false(不可添加新属性)         | false            | false              |
+| Object.isSealed(obj)     | false(非密封)                 | true             | true               |
+| Object.isFrozen(obj)     | false(非冻结)                 | false            | true               |
