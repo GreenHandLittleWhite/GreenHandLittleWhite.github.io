@@ -1,1 +1,5 @@
 # note
+
+```
+yarn dev
+```
