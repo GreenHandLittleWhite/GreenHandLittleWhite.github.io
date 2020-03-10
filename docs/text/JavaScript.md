@@ -369,7 +369,31 @@ prototype(Child, Parent);
 
 参考：
 
-- [JavaScript深入之继承的多种方式和优缺点](https://github.com/mqyqingfeng/Blog/issues/16)
-- JavaScript高级程序设计
+-   [JavaScript 深入之继承的多种方式和优缺点](https://github.com/mqyqingfeng/Blog/issues/16)
+-   JavaScript 高级程序设计
 
 ## new
+
+1. 创建一个对象
+2. 获得构造函数
+3. 链接到原型
+4. 绑定 this
+5. 返回新对象
+
+```js
+function objectFactory() {
+    let obj = new Object();
+
+    let Constructor = [].shift.call(arguments);
+
+    obj.__proto__ = Constructor.prototype;
+
+    let result = Constructor.apply(obj, arguments);
+
+    return typeof result === 'object' ? result || obj : obj;
+}
+```
+
+参考：
+
+-   [JavaScript 深入之 new 的模拟实现](https://github.com/mqyqingfeng/Blog/issues/13)
