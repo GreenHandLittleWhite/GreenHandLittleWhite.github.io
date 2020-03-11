@@ -247,3 +247,37 @@ export default {
 参考：
 
 -   [你不知道的 vue 组件传值方式](https://juejin.im/post/5dafc84a6fb9a04de04d98d5)
+
+## 定时器清除
+
+在 beforeDestroy 中清除
+
+```js
+export default {
+    mounted() {
+        this.timer = setInterval(() => {
+            console.log(1);
+        }, 1000);
+    },
+    beforeDestroy() {
+        clearInterval(this.timer);
+    }
+};
+```
+
+但是需要保存变量 timer
+
+推荐方法：
+
+```js
+export default {
+    mounted() {
+        const timer = setInterval(() => {
+            console.log(1);
+        }, 1000);
+        this.$once('hook:beforeDestory', () => {
+            clearInterval(timer);
+        });
+    }
+};
+```
