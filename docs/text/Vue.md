@@ -331,3 +331,19 @@ Vue.directive() 钩子（生命周期），均为可选
 -   vnode：Vue 编译生成的虚拟节点
 
 -   oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用
+
+## 解决动态设置 img 的 src 不生效问题
+
+因为动态添加 src 被当做静态资源处理了，没有进行编译，所以要加上 require
+
+```html
+<img :src="require('../../../assets/images/xxx.png')" />
+```
+
+## 重置 data
+
+```js
+Object.assign(this.$data, this.$options.data());
+```
+
+注：不能给 `this.$data` 直接赋值
