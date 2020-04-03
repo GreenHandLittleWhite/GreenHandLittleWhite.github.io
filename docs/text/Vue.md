@@ -107,7 +107,7 @@ computed: {
     fullName: {
         // getter
         get: function () {
-        return this.firstName + ' ' + this.lastName
+            return this.firstName + ' ' + this.lastName
         },
         // setter
         set: function (newValue) {
