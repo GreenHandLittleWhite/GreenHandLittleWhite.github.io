@@ -26,7 +26,7 @@ function deepClone(obj) {
 
 ```js
 function isObj(obj) {
-    return (typeof obj === 'object' || typeof obj === 'function') && obj !== null;
+    return typeof obj === 'object' && obj !== null;
 }
 
 function deepClone(obj, map = new WeakMap()) {
