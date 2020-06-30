@@ -29,15 +29,15 @@ function isObj(obj) {
     return (typeof obj === 'object' || typeof obj === 'function') && obj !== null;
 }
 
-function deepClone(obj, hash = new WeakMap()) {
-    if (hash.has(obj)) {
-        return hash.get(obj);
+function deepClone(obj, map = new WeakMap()) {
+    if (map.has(obj)) {
+        return map.get(obj);
     }
 
     let objClone = Array.isArray(obj) ? [] : {};
-    hash.set(obj, objClone);
+    map.set(obj, objClone);
     for (let key in obj) {
-        objClone[key] = isObj(obj[key]) ? deepClone(obj[key], hash) : obj[key];
+        objClone[key] = isObj(obj[key]) ? deepClone(obj[key], map) : obj[key];
     }
     return objClone;
 }
@@ -67,7 +67,7 @@ function isObj(obj) {
     return (typeof obj === 'object' || typeof obj === 'function') && obj !== null;
 }
 
-function deepClone(obj, hash = new WeakMap()) {
+function deepClone(obj, map = new WeakMap()) {
     let objClone;
     let Constructor = obj.constructor;
     switch (Constructor) {
@@ -79,12 +79,12 @@ function deepClone(obj, hash = new WeakMap()) {
             objClone = new Constructor(obj);
             break;
         default:
-            if (hash.has(obj)) return hash.get(obj);
+            if (map.has(obj)) return map.get(obj);
             objClone = new Constructor();
-            hash.set(obj, objClone);
+            map.set(obj, objClone);
     }
     for (let key in obj) {
-        objClone[key] = isObj(obj[key]) ? deepClone(obj[key], hash) : obj[key];
+        objClone[key] = isObj(obj[key]) ? deepClone(obj[key], map) : obj[key];
     }
     return objClone;
 }
