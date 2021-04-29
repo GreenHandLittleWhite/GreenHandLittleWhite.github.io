@@ -1,25 +1,30 @@
 module.exports = {
-    base: '/note/',
+    base: '',
     title: 'Note',
-    description: '随便记记',
+    description: 'my note',
     head: [['link', { rel: 'icon', href: '/logo.png' }]],
     themeConfig: {
+        home: '/',
         repo: 'GreenHandLittleWhite/note',
         docsDir: 'docs',
         sidebarDepth: 3,
-        nav: [
+        sidebar: [
+            [
+                '/',
+                'Welcome'
+            ],
             {
-                text: 'note',
-                link: '/text/'
+                title: 'Note',
+                children: [
+                    ['/note/JavaScript', 'JavaScript'],
+                    ['/note/框架', '框架'],
+                    ['/note/Vue', 'Vue'],
+                    ['/note/React', 'React'],
+                    ['/note/Node', 'Node'],
+                    ['/note/通识', '通识'],
+                    ['/note/HTTP', 'HTTP']
+                ]
             }
-        ],
-        sidebar: {
-            '/text/': [
-                {
-                    title: 'Note',
-                    children: ['', 'JavaScript', '框架', 'Vue', 'React', 'Node', '通识', 'HTTP']
-                }
-            ]
-        }
+        ]
     }
 };
