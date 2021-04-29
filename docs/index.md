@@ -1,1 +1,1 @@
-首页
+![An image](./assets/home-page.jpg)
