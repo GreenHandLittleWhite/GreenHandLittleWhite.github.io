@@ -1,5 +1,5 @@
 # note
 
 ```
-yarn dev
+yarn docs:dev
 ```
