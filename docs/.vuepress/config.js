@@ -9,19 +9,16 @@ module.exports = {
         docsDir: 'docs',
         sidebarDepth: 3,
         sidebar: [
-            [
-                '/',
-                'Welcome'
-            ],
+            ['/', 'Welcome'],
             {
                 title: 'Note',
                 children: [
                     ['/note/JavaScript', 'JavaScript'],
-                    ['/note/框架', '框架'],
+                    ['/note/Frame', '框架'],
                     ['/note/Vue', 'Vue'],
                     ['/note/React', 'React'],
                     ['/note/Node', 'Node'],
-                    ['/note/通识', '通识'],
+                    ['/note/General', '通识'],
                     ['/note/HTTP', 'HTTP']
                 ]
             }
