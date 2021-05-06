@@ -5,7 +5,7 @@ module.exports = {
     head: [['link', { rel: 'icon', href: '/logo.png' }]],
     themeConfig: {
         home: '/',
-        repo: 'GreenHandLittleWhite/note',
+        repo: 'GreenHandLittleWhite/GreenHandLittleWhite.github.io',
         docsDir: 'docs',
         sidebarDepth: 3,
         sidebar: [
