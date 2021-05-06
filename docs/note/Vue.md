@@ -1,5 +1,3 @@
-# Vue
-
 ## Vue 中的 MVVM
 
 ![An image](./assets/ViewModel.png)

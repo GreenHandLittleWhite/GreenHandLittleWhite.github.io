@@ -16,10 +16,11 @@ module.exports = {
                     ['/note/JavaScript', 'JavaScript'],
                     ['/note/Frame', '框架'],
                     ['/note/Vue', 'Vue'],
-                    ['/note/React', 'React'],
-                    ['/note/Node', 'Node'],
-                    ['/note/General', '通识'],
-                    ['/note/HTTP', 'HTTP']
+                    // ['/note/React', 'React'],
+                    // ['/note/Node', 'Node'],
+                    ['/note/HTTP', 'HTTP'],
+                    ['/note/Browser', '浏览器'],
+                    ['/note/General', '通识']
                 ]
             }
         ]

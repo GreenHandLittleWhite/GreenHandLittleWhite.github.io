@@ -1,5 +1,3 @@
-# JavaScript
-
 ## 深拷贝
 
 ```js
