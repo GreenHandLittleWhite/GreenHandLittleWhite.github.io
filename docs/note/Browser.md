@@ -100,11 +100,11 @@
 
         浏览器进程根据 DrawQuad 消息生成页面，显示到显示器上
 
-<!-- ![An image](./assets/render.png) -->
+![An image](./assets/url2render.png)
 
 参考：
 
--   [从输入URL到页面加载的过程？如何由一道题完善自己的前端知识体系！](https://dailc.github.io/2018/03/12/whenyouenteraurl.html)
+-   [从输入 URL 到页面加载的过程？如何由一道题完善自己的前端知识体系！](https://dailc.github.io/2018/03/12/whenyouenteraurl.html)
 -   [当···时发生了什么？](https://github.com/skyline75489/what-happens-when-zh_CN)
 
 ## 缓存
