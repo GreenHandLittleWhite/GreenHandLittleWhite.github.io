@@ -129,7 +129,63 @@ TCP 的连接的拆除需要发送四个包，因此称为四次挥手(Four-way 
 
 ## 简单请求和复杂请求
 
+1. 简单请求：
+
+满足一下两个条件的请求。
+
+-   请求方法是以下三种方法之一：
+
+```
+HEAD
+GET
+POST
+```
+
+-   HTTP 的头信息不超出以下几种字段：
+
+```
+Accept
+Accept-Language
+Content-Language
+Last-Event-ID
+Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain
+```
+
+2. 复杂请求：
+
+非简单请求就是复杂请求
+
+非简单请求是那种对服务器有特殊要求的请求，比如请求方法是 PUT 或 DELETE，或者 Content-Type 字段的类型是 application/json
+
+非简单请求的 CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求，称为"预检"请求（preflight）
+
+预检请求为 OPTIONS 请求，用于向服务器请求权限信息的
+
+预检请求被成功响应后，才会发出真实请求，携带真实数据
+
 ## GET 与 POST 区别
+
+**在规范的应用场景上说:**
+
+Get 多用于无副作用，幂等的场景，例如搜索关键字。
+
+Post 多用于副作用，不幂等的场景，例如注册。
+
+**在技术上说：**
+
+Get 请求能缓存，Post 不能
+
+Post 相对 Get 安全一点点，因为 Get 请求都包含在 URL 里，且会被浏览器保存历史纪录，Post 不会，但是在抓包的情况下都是一样的
+
+Post 可以通过 request body 来传输比 Get（放在 URL 的 querystring 中）更多的数据，URL 有长度限制，会影响 Get 请求，但是这个长度限制是浏览器规定的（携带数据的格式也只是浏览器发请求的情况）
+
+::: tip 提示
+
+**副作用** 指对服务器上的资源做改变，搜索是无副作用的，注册是副作用的。
+
+**幂等** 指发送 M 和 N 次请求（两者不相同且都大于 1），服务器上资源的状态一致，或者说任意多次执行所产生的影响均与一次执行的影响相同。比如注册 10 个和 11 个帐号是不幂等的，对文章进行更改 10 次和 11 次是幂等的。
+
+:::
 
 ## HTTP 版本区别
 
@@ -166,3 +222,11 @@ HTTP/2.0 中，允许服务器主动向客户端 push 资源。也就是说当�
 一次连接建立后，只要这个连接还在，那么客户端就可以在一个链接中批量发起多个请求
 
 同时，请求与请求间完全不阻塞，高度独立，实现并行请求
+
+## fetch 和 ajax 的区别
+
+1. fetch 采用了 Promise 的异步处理机制
+2. 在默认情况下 fetch 不会携带 cookies，需要设置 `fetch(url, {credentials: 'include'})`
+3. fetch 返回的 Promise 不会拒绝 HTTP 错误状态，只有网络错误这些导致请求不能完成时，fetch 才会被 reject
+4. fetch 不能中断，不支持超时控制，使用 setTimeout 及 Promise.reject 实现的超时控制并不能阻止请求过程继续在后台运行
+5. fetch 没有办法原生监测请求的进度

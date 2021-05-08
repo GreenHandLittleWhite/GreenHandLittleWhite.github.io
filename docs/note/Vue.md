@@ -345,3 +345,37 @@ Object.assign(this.$data, this.$options.data());
 ```
 
 注：不能给 `this.$data` 直接赋值
+
+## keep-alive
+
+1. 抽象组件，abstract: true，不会生成真正的 DOM
+
+2. 获取第一个子元素的 vnode，所以只处理第一个子元素
+
+3. include、exclude，判断是否命中缓存
+
+4. 命中缓存直接拿取，没命中就缓存一下，同时处理 max，超过了 max，就删除第一个缓存
+
+5. 设置 vnode.data.keepAlive = true
+
+### 首次渲染
+
+patch => createEle => createComponent
+
+createComponent 中判断 vnode.component 和 vnode.data.keepAlive
+
+作为第一次渲染，正常 mount，建立缓存
+
+### 缓存渲染
+
+patchVnode 中，在 diff 之前会调用 prepatch => updataChildComponent
+
+updataChildComponent 中对 $solt 做重新解析，执行 $forceUpdate，也就是 keep-alive 中的 render 方法，命中缓存，直接返回
+
+然后执行 path => createComponent
+
+已经不再是首次渲染，不再执行 mount 过程，所以不调用 created、mounted 等钩子
+
+最后通过 insert(……) 方法把缓存的 DOM 插入目标元素中
+
+在 insert 中 调用 activated 钩子函数，并且递归执行所有子组件的 activated
